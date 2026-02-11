@@ -1,19 +1,23 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
+import {productsUrl} from "./services/api"
 
-// import Navbar from "./components/layout/Navbar.js";
-// import Footer from "./components/layout/Footer.js";
-// import DashBoard from "./components/Dashboard.js";
-// import p from "./components/Product.js"
-
-import p  from "./components/ProductList"
+import type {ProductDataType} from "./DataTypes/ProductDataType"
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const[products,setProducts] = useState<ProductDataType[]>([]);
+ 
+     useEffect(() => {
+         fetch(productsUrl).then(res => res.json())
+                           .then(data => setProducts(data))
+     },[]);
+    
 
   return (
     <>
-     <p />
+      {products.map((a) => (
+        <div key={a.id}>{a.id}</div>
+      ))}
     </>
   )
 }

@@ -16,6 +16,8 @@ function ProductList(){
     console.log(products);
     return(
         <>
+        <h1>barinda</h1>
+        {products}
         </>
     )
 }
