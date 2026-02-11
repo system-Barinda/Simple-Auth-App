@@ -1,4 +1,4 @@
-export default interface ProductDataType{
+export  interface ProductDataType{
     id:number;
     title:string;
     price:number;
