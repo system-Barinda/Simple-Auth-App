@@ -13,4 +13,10 @@ function ProductList(){
         fetch(productsUrl).then(res => res.json())
                           .then(data => setProducts(data))
     },[]);
+    console.log(products);
+    return(
+        <>
+        </>
+    )
 }
+export default ProductList

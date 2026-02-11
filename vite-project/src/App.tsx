@@ -1,10 +1,11 @@
 import { useState } from 'react'
 
-import Navbar from "./components/layout/Navbar.js";
-import Footer from "./components/layout/Footer.js";
-import DashBoard from "./components/Dashboard.js";
-import p from "./components/Product.js"
+// import Navbar from "./components/layout/Navbar.js";
+// import Footer from "./components/layout/Footer.js";
+// import DashBoard from "./components/Dashboard.js";
+// import p from "./components/Product.js"
 
+import p  from "./components/ProductList"
 import './App.css'
 
 function App() {
@@ -12,9 +13,7 @@ function App() {
 
   return (
     <>
-      <Navbar />
-      <DashBoard />
-      <Footer />
+     <p />
     </>
   )
 }
