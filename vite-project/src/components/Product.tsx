@@ -13,7 +13,7 @@ function Product(){
    setLoading(true)
    setError(null)
 
-   let data = await fetch(`${productsUrl}`);
+   let data = await fetch(productsUrl);
    if(!data.ok) throw new Error('network connection failed');
    let corrected: ProductDataType[] = await data.json();
    setProducts(corrected);
@@ -29,7 +29,7 @@ function Product(){
  
 fetchProduct();
  },[]);
-products.forEach(a => console.log(a.id));
+
 return(
     <div>
         {loading && <p>loading..............</p>}
