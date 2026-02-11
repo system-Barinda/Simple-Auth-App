@@ -45,6 +45,11 @@ fetchProduct();
 return(
     <div>
         {loading && <p>loading..............</p>}
+        {error && <p className="text-red-500">{error}</p>}
+
+        {products.map(product => (
+            <div key={product.id}>{product.title}</div>
+        ))}
     </div>
 )
 }
@@ -72,7 +77,7 @@ function ProductCard({product}){
 function Dashboard(){
    
     return(
-        <h1>barinda system sylvere</h1>
+        <Product />
     )
 }
 export default Dashboard;
