@@ -17,14 +17,21 @@ function Product(){
  const [error,setError] = useState<string | null>(null);
  const [loading,setLoading] = useState<boolean>(false);
  useEffect( async() => {
+    try{
+ 
    let data = await fetch(`${productsUrl}`);
    if(!data.ok) throw new Error('network connection failed');
    let corrected = await data.json();
    setProducts(corrected);
-
+   setLoading(true)
+  }
+  catch(err){
+   setError (new Error('!Ooops something went wrong'));
+   setLoading(false);
+  }
  },[]);
 
-return();
+
 }
 
 
