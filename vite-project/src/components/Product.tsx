@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import  { productsUrl } from "../services/api"
-import type  ProductDataType  from "../DataTypes/ProductDataType";
+import type  { ProductDataType }  from "../DataTypes/ProductDataType";
 
 function Product(){
  const [products,setProducts] = useState<ProductDataType[]>([]);
