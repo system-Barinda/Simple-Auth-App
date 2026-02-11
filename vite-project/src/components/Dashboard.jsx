@@ -14,7 +14,13 @@ export interface ProductDataType{
 
 function Product(){
  const [products,setProducts] = useState<ProductDataType[]>([]);
- useEffect(() => {
+ const [error,setError] = useState<string | null>(null);
+ const [loading,setLoading] = useState<boolean>(false);
+ useEffect( async() => {
+   let data = await fetch(`${productsUrl}`);
+   if(!data.ok) throw new Error('network connection failed');
+   let corrected = await data.json();
+   setProducts(corrected);
 
  },[]);
 
