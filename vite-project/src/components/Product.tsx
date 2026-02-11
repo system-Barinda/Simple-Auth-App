@@ -29,7 +29,7 @@ function Product(){
  
 fetchProduct();
  },[]);
-console.log(products)
+products.forEach(a => console.log(a.id));
 return(
     <div>
         {loading && <p>loading..............</p>}
