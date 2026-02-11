@@ -1,11 +1,11 @@
+import { useEffect, useState } from "react";
+import  productsUrl from "../services/api"
+import type  ProductDataType  from "../DataTypes/ProductDataType";
 function Product(){
  const [products,setProducts] = useState<ProductDataType[]>([]);
  const [error,setError] = useState<string | null>(null);
  const [loading,setLoading] = useState<boolean>(false);
 
- const fetchProduct = async() => {
-
- }
  useEffect( () => {
     const fetchProduct = async() => {
     try{
@@ -25,6 +25,7 @@ function Product(){
     setLoading(false);
   }
 };
+ 
 fetchProduct();
  },[]);
 
