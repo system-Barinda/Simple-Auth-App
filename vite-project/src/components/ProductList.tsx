@@ -1,24 +1,21 @@
-import { useEffect,useState } from "react";
-
-import  { productsUrl } from "../services/api"
-
-import type  { ProductDataType }  from "../DataTypes/ProductDataType";
-
 import ProductCard from "./ProductCard";
+import type { ProductDataType } from "../DataTypes/ProductDataType";
 
-function ProductList(){
-    const[products,setProducts] = useState<ProductDataType[]>([]);
+type ProductListProps = {
+  products: ProductDataType[];
+};
 
-    useEffect(() => {
-        fetch(productsUrl).then(res => res.json())
-                          .then(data => setProducts(data))
-    },[]);
-    console.log(products);
-    return(
-        <>
-        <h1>barinda</h1>
-        {products}
-        </>
-    )
+function ProductList({ products }: ProductListProps) {
+  return (
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {products.map(product => (
+        <ProductCard
+          key={product.id}
+          product={product}
+        />
+      ))}
+    </div>
+  );
 }
-export default ProductList
+
+export default ProductList;
