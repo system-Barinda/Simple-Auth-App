@@ -1,3 +1,7 @@
+
+
+
+
 function ProductCard({product}){
     return(
      <div className="border p-3 rounded">
