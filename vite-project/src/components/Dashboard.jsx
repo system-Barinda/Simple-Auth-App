@@ -23,11 +23,11 @@ function Product(){
    if(!data.ok) throw new Error('network connection failed');
    let corrected = await data.json();
    setProducts(corrected);
-   setLoading(true)
+   setLoading = true;
   }
   catch(err){
-   setError (new Error('!Ooops something went wrong'));
-   setLoading(false);
+   setError ('!Ooops something went wrong');
+   setLoading = false;
   }
  },[]);
 
