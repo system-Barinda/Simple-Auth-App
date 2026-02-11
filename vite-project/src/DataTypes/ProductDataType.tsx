@@ -1,4 +1,4 @@
-interface ProductDataType{
+export default interface ProductDataType{
     id:number;
     title:string;
     price:number;
@@ -6,3 +6,4 @@ interface ProductDataType{
     image:string;
     category:string;
 };
+ 
