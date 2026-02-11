@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import  productsUrl from "../services/api"
+import  { productsUrl } from "../services/api"
 import type  ProductDataType  from "../DataTypes/ProductDataType";
 
 function Product(){
@@ -29,7 +29,7 @@ function Product(){
  
 fetchProduct();
  },[]);
-
+console.log(products)
 return(
     <div>
         {loading && <p>loading..............</p>}
