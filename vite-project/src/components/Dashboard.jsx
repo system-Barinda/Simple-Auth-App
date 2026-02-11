@@ -1,4 +1,25 @@
+import { useEffect, useState } from "react";
+import  productsUrl from "../services/api"
 
+export interface ProductDataType{
+    id:number;
+    title:string;
+    price:number;
+    description:string;
+    image:string;
+    category:string;
+}
+
+
+
+function Product(){
+ const [products,setProducts] = useState<ProductDataType[]>([]);
+ useEffect(() => {
+
+ },[]);
+
+return();
+}
 
 
 
@@ -21,6 +42,7 @@ function ProductCard({product}){
 }
 
 function Dashboard(){
+   
     return(
         <h1>barinda system sylvere</h1>
     )
