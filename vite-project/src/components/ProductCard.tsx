@@ -1,10 +1,9 @@
-import type { ProductDataType } from "../DataTypes/ProductDataType";
-
+import { ProductDataType } from "../DataTypes/ProductData.type";
 type ProductCardProps = {
   product: ProductDataType;
 };
 
-function ProductCard({ product }: ProductCardProps) {
+function ProductCard({ product }:Readonly<ProductCardProps>) {
   return (
     <div className="border p-3 rounded">
       <img

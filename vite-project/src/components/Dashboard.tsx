@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ProductList from "./ProductList";
 import { productsUrl } from "../services/api";
-import type { ProductDataType } from "../DataTypes/ProductDataType";
+import type { ProductDataType } from "../DataTypes/ProductData.type";
 
 function Dashboard() {
   const [products, setProducts] = useState<ProductDataType[]>([]);

@@ -1,11 +1,11 @@
 import ProductCard from "./ProductCard";
-import type { ProductDataType } from "../DataTypes/ProductDataType";
+import { ProductDataType } from "../DataTypes/ProductData.type";
 
 type ProductListProps = {
   products: ProductDataType[];
 };
 
-function ProductList({ products }: ProductListProps) {
+function ProductList({ products }: Readonly<ProductListProps>) {
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
       {products.map((product) => (
