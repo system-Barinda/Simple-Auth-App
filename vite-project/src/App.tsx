@@ -1,10 +1,16 @@
-import Product from "./components/Product";
+import Dashboard from "./components/Dashboard";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100">
-      <Product />
-    </div>
+    <>
+      <Navbar />
+      <main className="p-4">
+        <Dashboard />
+      </main>
+      <Footer />
+    </>
   );
 }
 
