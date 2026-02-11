@@ -16,22 +16,37 @@ function Product(){
  const [products,setProducts] = useState<ProductDataType[]>([]);
  const [error,setError] = useState<string | null>(null);
  const [loading,setLoading] = useState<boolean>(false);
- useEffect( async() => {
+
+ const fetchProduct = async() => {
+
+ }
+ useEffect( () => {
+    const fetchProduct = async() => {
     try{
- 
+   setLoading(true)
+   setError(null)
+
    let data = await fetch(`${productsUrl}`);
    if(!data.ok) throw new Error('network connection failed');
-   let corrected = await data.json();
+   let corrected: ProductDataType[] = await data.json();
    setProducts(corrected);
-   setLoading = true;
+ 
   }
   catch(err){
-   setError ('!Ooops something went wrong');
-   setLoading = false;
+   setError(err instanceof Error ? err.message : "Ooops! Something went wrong" )
   }
+  finally{
+    setLoading(false);
+  }
+};
+fetchProduct();
  },[]);
 
-
+return(
+    <div>
+        {loading && <p>loading..............</p>}
+    </div>
+)
 }
 
 
