@@ -1,6 +1,6 @@
 export default function Footer(){
     return(
-        <footer className="bg-gray-900 text-gray-300 py-4">
+        <footer className="bg-gray-400 text-gray-100 py-4">
             <div className="flex justify-between px-6 text-sm">
                 <span>© 2026 myWebsite</span>
                 <span className="space-x-4">
