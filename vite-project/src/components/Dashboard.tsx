@@ -1,7 +1,8 @@
+import ProductCard from "./ProductCard";
 function Dashboard(){
    
     return(
-        <Product />
+        <ProductCard key={} />
     )
 }
 export default Dashboard;
