@@ -1,4 +1,4 @@
-import FunFact from "../../DataTypes/ProductData.type"
+import {FunFact} from "../../DataTypes/types"
 
 const funFactsData: FunFact[] = [
   { id: 1, text: "Was first released in 2013" },
