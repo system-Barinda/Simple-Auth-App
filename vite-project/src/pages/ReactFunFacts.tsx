@@ -9,8 +9,19 @@ function Header(){
         </header>
     )
 }
+
+function MainBody(){
+    return(
+     <div className="w-[681px] h-[459px] mt-[91px] bg-[#282D35]">
+
+     </div>
+    );
+}
 export default function ReactFunFacts(){
     return(
+        <>
         <Header />
+        <MainBody />
+        </>
     )
 }
