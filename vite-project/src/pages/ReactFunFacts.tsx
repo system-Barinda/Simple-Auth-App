@@ -12,9 +12,9 @@ function Header(){
 
 function MainBody(){
     return(
-     <div className="w-[681px] h-[459px] mt-[91px] bg-[#282D35]">
-         <p className="w-[424px] h-[41px] mt-[148px] ml-[27px] text-[39.06px] text-[#FFFFFF]">Fun facts about React</p>
-         <ol className="bodyText w-[390px] h-[190px] mt-[65px] ml-[74px] text-[#FFFFFF] flex-col space-y-3">
+     <div className="w-137.5  h-114.75 mt-5.25 bg-[#282D35]">
+         <p className="w-106 h-10.25  ml-6.75 text-[39.06px] text-[#FFFFFF]">Fun facts about React</p>
+         <ol className="bodyText w-97.5 h-47.5 mt-16.25 ml-18.5 text-[#FFFFFF] flex-col space-y-3">
                 <li>Was first released in 2013</li>
                 <li>Was originally created by Jordan Walke</li>
                 <li>Has well over 200K stars on GitHub</li>
