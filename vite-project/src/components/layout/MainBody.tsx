@@ -1,17 +1,29 @@
-function MainBody() {
+import FunFact from "../../DataTypes/ProductData.type"
+
+const funFactsData: FunFact[] = [
+  { id: 1, text: "Was first released in 2013" },
+  { id: 2, text: "Was originally created by Jordan Walke" },
+  { id: 3, text: "Has well over 200K stars on GitHub" },
+  { id: 4, text: "Is maintained by Meta" },
+  { id: 5, text: "Powers thousands of enterprise apps" },
+];
+
+function MainBody(): JSX.Element {
   return (
-    <div className="w-137.5  h-114.75  bg-[#282D35] mx-auto">
-      <p className="w-106 h-10.25  ml-6.75 text-[39.06px] text-[#FFFFFF]">
+    <main className="bg-[#282D35] text-white px-8 py-12 max-w-5xl mx-auto rounded-lg">
+      <h1 className="text-4xl font-bold mb-8">
         Fun facts about React
-      </p>
-      <ol className="bodyText w-97.5 h-47.5 mt-16.25 ml-18.5 text-[#FFFFFF] flex-col space-y-3">
+      </h1>
+
+      <ol className="list-disc pl-6 space-y-4 text-lg">
         <li>Was first released in 2013</li>
         <li>Was originally created by Jordan Walke</li>
         <li>Has well over 200K stars on GitHub</li>
         <li>Is maintained by Meta</li>
         <li>Powers thousands of enterprise apps, including mobile apps</li>
       </ol>
-    </div>
+    </main>
   );
 }
+
 export default MainBody;

@@ -1,11 +1,6 @@
 import { Link } from "react-router-dom";
 
-const menu = [
-  "home",
-  "service",
-  "fun-facts",
-  "register",
-];
+const menu = ["home", "service", "fun-facts", "register"];
 
 function Navbar() {
   return (

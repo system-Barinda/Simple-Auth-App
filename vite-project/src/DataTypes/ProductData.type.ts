@@ -6,3 +6,8 @@ export type  ProductDataType = {
   image: string;
   category: string;
 }
+
+export type FunFact = {
+  id: number;
+  text: string;
+};
