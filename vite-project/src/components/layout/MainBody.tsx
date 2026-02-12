@@ -10,7 +10,7 @@ const funFactsData: FunFact[] = [
 
 function MainBody() {
   return (
-    <main className="bg-[#282D35] text-white px-8 py-12 max-w-5xl mx-auto rounded-lg">
+    <main className=" w-137.5 bg-[#282D35] text-white px-8 py-12 max-w-5xl mx-auto ">
       <h1 className="text-4xl font-bold mb-8">Fun facts about React</h1>
 
       <ol className="list-disc pl-6 space-y-4 text-lg">
