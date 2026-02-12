@@ -1,3 +1,5 @@
+import Header from "../components/layout/Header"
+import MainBody  from "../components/layout/MainBody";
 export default function ReactFunFacts() {
   return (
     <div className="bg-black w-full h-161 ">
