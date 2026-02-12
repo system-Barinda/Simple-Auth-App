@@ -1,23 +1,28 @@
+import { Link } from "react-router-dom";
+
 const menu = [
-'home',
-'service',
-'about',
-'register'
+  "home",
+  "service",
+  "fun-facts",
+  "register",
 ];
 
-function Navbar(){ 
-let b = menu.map(a => {
-return (
-<div className="bg-slate-200 h-10 w-30 rounded shadow text-stone-900 text-center cursor-pointer" key={a}>{a}</div>
-    )
+function Navbar() {
+  return (
+    <div className="bg-gray-300 h-20 w-full flex justify-center items-center gap-10">
+      {menu.map((item) => {
+        const path = item === "home" ? "/" : `/${item}`;
 
- });
-
-   
-return(
- <div className="bg-gray-300 h-20 w-[100%] flex justify-center items-center gap-10">
-  {b}
-</div>
-)
+        return (
+          <Link to={path} key={item}>
+            <div className="bg-slate-200 h-10 px-6 rounded shadow text-stone-900 text-center flex items-center cursor-pointer hover:bg-slate-300">
+              {item}
+            </div>
+          </Link>
+        );
+      })}
+    </div>
+  );
 }
+
 export default Navbar;
