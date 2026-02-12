@@ -1,4 +1,5 @@
-import barinda from "../assets/react.svg";
+import barinda from "../../assets/react.svg";
+
 function Header() {
   return (
     <header className="h-22.75 w-137.5 bg-[#21222A] text-[#61DAFB]  mx-auto flex ">
@@ -12,3 +13,4 @@ function Header() {
     </header>
   );
 }
+export default Header;
