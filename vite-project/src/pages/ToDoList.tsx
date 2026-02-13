@@ -1,26 +1,30 @@
 import { useState } from "react";
 
-export default function toDolist() {
+export default function TodoList() {
   const [tasks, setTasks] = useState([]);
   const [text, setText] = useState("");
 
-
+  // Add a new task
   const addTask = (e) => {
     e.preventDefault();
     if (!text.trim()) return;
 
-    setTasks([
-      ...tasks,
-      { id: Date.now(), text, completed: false }
+    setTasks((prevTasks) => [
+      ...prevTasks,
+      {
+        id: Date.now(),
+        text,
+        completed: false,
+      },
     ]);
 
     setText("");
   };
 
- 
+  // Toggle task completion
   const toggleTask = (id) => {
-    setTasks(
-      tasks.map(task =>
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
         task.id === id
           ? { ...task, completed: !task.completed }
           : task
@@ -28,20 +32,21 @@ export default function toDolist() {
     );
   };
 
-
+  // Delete a task
   const deleteTask = (id) => {
-    setTasks(tasks.filter(task => task.id !== id));
+    setTasks((prevTasks) =>
+      prevTasks.filter((task) => task.id !== id)
+    );
   };
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-6">
-
         <h1 className="text-2xl font-bold text-center text-blue-600 mb-6">
           To-Do List
         </h1>
 
-      
+        {/* Add Task */}
         <form onSubmit={addTask} className="flex gap-2 mb-4">
           <input
             type="text"
@@ -50,6 +55,7 @@ export default function toDolist() {
             placeholder="Enter a task..."
             className="flex-1 px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
+
           <button
             type="submit"
             className="bg-blue-600 text-white px-4 rounded-xl font-semibold hover:bg-blue-700"
@@ -58,7 +64,7 @@ export default function toDolist() {
           </button>
         </form>
 
-        
+        {/* Task List */}
         <ul className="space-y-3">
           {tasks.length === 0 && (
             <p className="text-center text-gray-400">
@@ -66,7 +72,7 @@ export default function toDolist() {
             </p>
           )}
 
-          {tasks.map(task => (
+          {tasks.map((task) => (
             <li
               key={task.id}
               className="flex items-center justify-between bg-gray-50 p-3 rounded-xl"
@@ -78,12 +84,13 @@ export default function toDolist() {
                   onChange={() => toggleTask(task.id)}
                   className="w-5 h-5 accent-blue-600"
                 />
+
                 <span
-                  className={`${
+                  className={
                     task.completed
                       ? "line-through text-gray-400"
                       : "text-gray-700"
-                  }`}
+                  }
                 >
                   {task.text}
                 </span>
@@ -99,7 +106,6 @@ export default function toDolist() {
             </li>
           ))}
         </ul>
-
       </div>
     </div>
   );
