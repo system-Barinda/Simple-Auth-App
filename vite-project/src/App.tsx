@@ -8,7 +8,7 @@ import ToDoList from "./pages/ToDoList";
 function App() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar />
 
       <main className="p-4 min-h-screen">
         <Routes>
@@ -18,7 +18,8 @@ function App() {
         </Routes>
       </main>
 
-      <Footer />
+      <Footer /> */}
+      <ToDoList />
     </>
   );
 }
