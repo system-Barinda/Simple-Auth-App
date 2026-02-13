@@ -1,30 +1,38 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import TodoForm from "../components/TodoForm";
+import TodoItem from "../components/TodoItem";
+import ThemeToggle from "../components/ThemeToggle";
 
-export default function TodoList() {
-  const [tasks, setTasks] = useState([]);
-  const [text, setText] = useState("");
+export default function ToDoList() {
+  const [tasks, setTasks] = useState(() => {
+    const saved = localStorage.getItem("tasks");
+    return saved ? JSON.parse(saved) : [];
+  });
 
-  // Add a new task
-  const addTask = (e) => {
-    e.preventDefault();
-    if (!text.trim()) return;
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
 
-    setTasks((prevTasks) => [
-      ...prevTasks,
-      {
-        id: Date.now(),
-        text,
-        completed: false,
-      },
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
+ 
+  useEffect(() => {
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
+  }, [darkMode]);
+
+  const addTask = (text) => {
+    setTasks([
+      ...tasks,
+      { id: Date.now(), text, completed: false },
     ]);
-
-    setText("");
   };
 
-  // Toggle task completion
   const toggleTask = (id) => {
-    setTasks((prevTasks) =>
-      prevTasks.map((task) =>
+    setTasks(
+      tasks.map((task) =>
         task.id === id
           ? { ...task, completed: !task.completed }
           : task
@@ -32,80 +40,50 @@ export default function TodoList() {
     );
   };
 
-  // Delete a task
   const deleteTask = (id) => {
-    setTasks((prevTasks) =>
-      prevTasks.filter((task) => task.id !== id)
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
+  const editTask = (id, newText) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, text: newText } : task
+      )
     );
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-6">
-        <h1 className="text-2xl font-bold text-center text-blue-600 mb-6">
-          To-Do List
-        </h1>
+    <div className={darkMode ? "dark" : ""}>
+      <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center p-4 transition-colors">
+        <div className="w-full max-w-md bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+          
+          <div className="flex justify-between items-center mb-6">
+            <h1 className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+              To-Do List
+            </h1>
+            <ThemeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
+          </div>
 
-        {/* Add Task */}
-        <form onSubmit={addTask} className="flex gap-2 mb-4">
-          <input
-            type="text"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            placeholder="Enter a task..."
-            className="flex-1 px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
+          <TodoForm onAdd={addTask} />
 
-          <button
-            type="submit"
-            className="bg-blue-600 text-white px-4 rounded-xl font-semibold hover:bg-blue-700"
-          >
-            Add
-          </button>
-        </form>
+          <ul className="space-y-3 mt-4">
+            {tasks.length === 0 && (
+              <p className="text-center text-gray-400">
+                No tasks yet
+              </p>
+            )}
 
-        {/* Task List */}
-        <ul className="space-y-3">
-          {tasks.length === 0 && (
-            <p className="text-center text-gray-400">
-              No tasks yet
-            </p>
-          )}
-
-          {tasks.map((task) => (
-            <li
-              key={task.id}
-              className="flex items-center justify-between bg-gray-50 p-3 rounded-xl"
-            >
-              <label className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={task.completed}
-                  onChange={() => toggleTask(task.id)}
-                  className="w-5 h-5 accent-blue-600"
-                />
-
-                <span
-                  className={
-                    task.completed
-                      ? "line-through text-gray-400"
-                      : "text-gray-700"
-                  }
-                >
-                  {task.text}
-                </span>
-              </label>
-
-              <button
-                onClick={() => deleteTask(task.id)}
-                className="text-red-500 hover:text-red-700 font-bold"
-                aria-label="Delete task"
-              >
-                ✕
-              </button>
-            </li>
-          ))}
-        </ul>
+            {tasks.map((task) => (
+              <TodoItem
+                key={task.id}
+                task={task}
+                onToggle={toggleTask}
+                onDelete={deleteTask}
+                onEdit={editTask}
+              />
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
