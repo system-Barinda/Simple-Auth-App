@@ -1,18 +1,19 @@
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 
 type TodoFormProps = {
   onAdd: (text: string) => void;
 };
 
-export default function TodoForm({ onAdd }: TodoFormProps) {
+export default function TodoForm({ onAdd }: Readonly<TodoFormProps>) {
   const [text, setText] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!text.trim()) return;
-    onAdd(text);
-    setText("");
-  };
+  const handleSubmit = (e: FormEvent) => {
+  e.preventDefault();
+  if (!text.trim()) return;
+  onAdd(text);
+  setText("");
+};
+
 
   return (
     <form onSubmit={handleSubmit} className="flex gap-2">
