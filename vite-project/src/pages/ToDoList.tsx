@@ -4,7 +4,7 @@ export default function toDolist() {
   const [tasks, setTasks] = useState([]);
   const [text, setText] = useState("");
 
-  // Add task
+
   const addTask = (e) => {
     e.preventDefault();
     if (!text.trim()) return;
@@ -17,7 +17,7 @@ export default function toDolist() {
     setText("");
   };
 
-  // Toggle complete
+ 
   const toggleTask = (id) => {
     setTasks(
       tasks.map(task =>
@@ -28,7 +28,7 @@ export default function toDolist() {
     );
   };
 
-  // Delete task
+
   const deleteTask = (id) => {
     setTasks(tasks.filter(task => task.id !== id));
   };
@@ -41,7 +41,7 @@ export default function toDolist() {
           To-Do List
         </h1>
 
-        {/* Add Task */}
+      
         <form onSubmit={addTask} className="flex gap-2 mb-4">
           <input
             type="text"
@@ -58,7 +58,7 @@ export default function toDolist() {
           </button>
         </form>
 
-        {/* Task List */}
+        
         <ul className="space-y-3">
           {tasks.length === 0 && (
             <p className="text-center text-gray-400">
