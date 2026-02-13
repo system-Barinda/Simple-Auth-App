@@ -8,12 +8,11 @@ export default function TodoForm({ onAdd }: Readonly<TodoFormProps>) {
   const [text, setText] = useState("");
 
   const handleSubmit = (e: FormEvent) => {
-  e.preventDefault();
-  if (!text.trim()) return;
-  onAdd(text);
-  setText("");
-};
-
+    e.preventDefault();
+    if (!text.trim()) return;
+    onAdd(text);
+    setText("");
+  };
 
   return (
     <form onSubmit={handleSubmit} className="flex gap-2">

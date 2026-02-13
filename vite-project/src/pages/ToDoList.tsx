@@ -3,7 +3,6 @@ import TodoForm from "../components/TodoForm";
 import TodoItem from "../components/TodoItem";
 import ThemeToggle from "../components/ThemeToggle";
 
-
 type Task = {
   id: number;
   text: string;
@@ -11,7 +10,6 @@ type Task = {
 };
 
 export default function ToDoList() {
- 
   const [tasks, setTasks] = useState<Task[]>(() => {
     const saved = localStorage.getItem("tasks");
     return saved ? (JSON.parse(saved) as Task[]) : [];
@@ -29,21 +27,15 @@ export default function ToDoList() {
     localStorage.setItem("theme", darkMode ? "dark" : "light");
   }, [darkMode]);
 
-
   const addTask = (text: string): void => {
-    setTasks([
-      ...tasks,
-      { id: Date.now(), text, completed: false },
-    ]);
+    setTasks([...tasks, { id: Date.now(), text, completed: false }]);
   };
 
   const toggleTask = (id: number): void => {
     setTasks(
       tasks.map((task) =>
-        task.id === id
-          ? { ...task, completed: !task.completed }
-          : task
-      )
+        task.id === id ? { ...task, completed: !task.completed } : task,
+      ),
     );
   };
 
@@ -53,9 +45,7 @@ export default function ToDoList() {
 
   const editTask = (id: number, newText: string): void => {
     setTasks(
-      tasks.map((task) =>
-        task.id === id ? { ...task, text: newText } : task
-      )
+      tasks.map((task) => (task.id === id ? { ...task, text: newText } : task)),
     );
   };
 
@@ -74,9 +64,7 @@ export default function ToDoList() {
 
           <ul className="space-y-3 mt-4">
             {tasks.length === 0 && (
-              <p className="text-center text-gray-400">
-                No tasks yet
-              </p>
+              <p className="text-center text-gray-400">No tasks yet</p>
             )}
 
             {tasks.map((task) => (

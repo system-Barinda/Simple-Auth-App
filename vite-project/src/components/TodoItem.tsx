@@ -1,10 +1,30 @@
 import { useState } from "react";
 
-export default function TodoItem({ task, onToggle, onDelete, onEdit }) {
-  const [isEditing, setIsEditing] = useState(false);
-  const [editText, setEditText] = useState(task.text);
+/* ✅ Task type (same as in ToDoList) */
+type Task = {
+  id: number;
+  text: string;
+  completed: boolean;
+};
 
-  const saveEdit = () => {
+/* ✅ Props type */
+type TodoItemProps = {
+  task: Task;
+  onToggle: (id: number) => void;
+  onDelete: (id: number) => void;
+  onEdit: (id: number, newText: string) => void;
+};
+
+export default function TodoItem({
+  task,
+  onToggle,
+  onDelete,
+  onEdit,
+}: TodoItemProps) {
+  const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [editText, setEditText] = useState<string>(task.text);
+
+  const saveEdit = (): void => {
     if (!editText.trim()) return;
     onEdit(task.id, editText);
     setIsEditing(false);
