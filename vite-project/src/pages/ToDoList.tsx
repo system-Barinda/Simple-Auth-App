@@ -3,34 +3,41 @@ import TodoForm from "../components/TodoForm";
 import TodoItem from "../components/TodoItem";
 import ThemeToggle from "../components/ThemeToggle";
 
+
+type Task = {
+  id: number;
+  text: string;
+  completed: boolean;
+};
+
 export default function ToDoList() {
-  const [tasks, setTasks] = useState(() => {
+ 
+  const [tasks, setTasks] = useState<Task[]>(() => {
     const saved = localStorage.getItem("tasks");
-    return saved ? JSON.parse(saved) : [];
+    return saved ? (JSON.parse(saved) as Task[]) : [];
   });
 
-  const [darkMode, setDarkMode] = useState(() => {
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
     return localStorage.getItem("theme") === "dark";
   });
-
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
- 
   useEffect(() => {
     localStorage.setItem("theme", darkMode ? "dark" : "light");
   }, [darkMode]);
 
-  const addTask = (text) => {
+
+  const addTask = (text: string): void => {
     setTasks([
       ...tasks,
       { id: Date.now(), text, completed: false },
     ]);
   };
 
-  const toggleTask = (id) => {
+  const toggleTask = (id: number): void => {
     setTasks(
       tasks.map((task) =>
         task.id === id
@@ -40,11 +47,11 @@ export default function ToDoList() {
     );
   };
 
-  const deleteTask = (id) => {
+  const deleteTask = (id: number): void => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
-  const editTask = (id, newText) => {
+  const editTask = (id: number, newText: string): void => {
     setTasks(
       tasks.map((task) =>
         task.id === id ? { ...task, text: newText } : task
@@ -54,9 +61,8 @@ export default function ToDoList() {
 
   return (
     <div className={darkMode ? "dark" : ""}>
-      <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center p-4 transition-colors">
+      <div className="min-h-screen bg-gray-300 dark:bg-slate-500 flex items-center justify-center p-4 transition-colors">
         <div className="w-full max-w-md bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
-          
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-blue-600 dark:text-blue-400">
               To-Do List
