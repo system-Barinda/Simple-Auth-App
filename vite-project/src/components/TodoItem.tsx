@@ -1,13 +1,11 @@
 import { useState } from "react";
 
-/* ✅ Task type (same as in ToDoList) */
 type Task = {
   id: number;
   text: string;
   completed: boolean;
 };
 
-/* ✅ Props type */
 type TodoItemProps = {
   task: Task;
   onToggle: (id: number) => void;
@@ -20,7 +18,7 @@ export default function TodoItem({
   onToggle,
   onDelete,
   onEdit,
-}: TodoItemProps) {
+}: Readonly<TodoItemProps>) {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [editText, setEditText] = useState<string>(task.text);
 
@@ -61,10 +59,7 @@ export default function TodoItem({
 
       <div className="flex gap-2 ml-2">
         {isEditing ? (
-          <button
-            onClick={saveEdit}
-            className="text-green-600 font-semibold"
-          >
+          <button onClick={saveEdit} className="text-green-600 font-semibold">
             Save
           </button>
         ) : (
