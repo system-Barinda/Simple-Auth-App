@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const menu = ["home", "to do list", "fun-facts", "register"];
+const menu = ["home", "ToDoList", "fun-facts", "register"];
 
 function Navbar() {
   return (
